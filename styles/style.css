@@ -1,0 +1,316 @@
+/* General Styles */
+body,
+html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  font-family: "Inter", sans-serif;
+  font-weight: 700;
+  letter-spacing: -1px;
+  overflow-x: hidden;
+  background: none !important; 
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Loading Container */
+.loading-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+  position: relative;
+  font-weight: 350;
+  transition: transform 1s ease-in-out, opacity 1s ease-in-out;
+}
+
+.loading-container.finished {
+  transform: translateY(100%);
+  opacity: 0;
+}
+
+/* Section Styles */
+section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+}
+
+span {
+  display: inline-flex;
+  align-items: center;
+  font-size: 64px;
+  opacity: 0;
+  transform: translateX(0px);
+}
+
+span.in-view {
+  opacity: 1;
+  transform: translateX(0px);
+}
+
+span.out-view {
+  opacity: 0;
+  transform: translateX(0px);
+}
+
+.prefix {
+  margin-right: 10px;
+  font-size: 64px;
+  display: inline-block;
+}
+
+/* Home Container */
+.home-container {
+  /* background-color: #9a9e9f; */
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: transform 1s ease-in-out, opacity 1s ease-in-out;
+}
+
+.home-container.visible {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* Section Styles */
+section {
+  width: 100%;
+  padding: 50px 20px;
+  /* background-color: #fff; */
+  margin-bottom: 20px;
+}
+
+/* Introduction Styles */
+.introduction {
+  background-color: #9a9e9f;
+  width: 100%;
+  overflow: hidden;
+  /* background-color: #333; */
+  display: flex;
+  justify-content: space-around;
+}
+
+.text-container {
+  padding-top: 40px;
+  /* padding-left: 30px; */
+  letter-spacing: 0px;
+  font-weight: 450;
+}
+
+.image-container {
+  width: 57%;
+  height: 100%;
+  /* position: relative; */
+  margin-top: -80px;
+}
+
+.intro-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.location-badge {
+  position: absolute;
+  top: 27%;
+  left: 0;
+  /* transform: translateY(-50%); */
+  background-color: #1c1d20;
+  color: white;
+  padding: 10px 10px;
+  border-top-right-radius: 50px;
+  border-bottom-right-radius: 50px;
+  font-size: 14px;
+  text-align: center;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+}
+
+.location-badge.vertical {
+  flex-direction: column;
+}
+
+.badge-icons {
+  display: flex;
+}
+
+.location-badge.vertical .badge-icons {
+  flex-direction: column;
+}
+
+.badge-icon {
+  margin: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.header-container {
+  display: flex;
+  padding-top: 40px;
+}
+
+.header-text {
+  padding-right: 20px;
+  font-weight: 450;
+  letter-spacing: 0px;
+  font-size: 18px;
+  cursor: pointer;
+  position: relative; /* Positioning for the pseudo-element */
+  transition: transform 0.2s ease-in-out; /* Smooth transition */
+}
+
+.header-text-final {
+  font-weight: 450;
+  letter-spacing: 0px;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.text-container-h1 {
+  font-size: 18px;
+}
+
+.freelancer-section {
+  position: absolute;
+  top: 30%;
+  right: 20%; /* Adjust distance from right edge */
+  transform: translateY(-50%);
+  text-align: right;
+  color: white;
+  z-index: 2;
+}
+
+.freelancer-section p {
+  margin: 5px 0;
+  text-align: left;
+  font-weight: 450;
+  letter-spacing: 0px;
+  font-size: 42px;
+}
+.dynamic-text-container {
+  display: inline-flex;
+  align-items: center;
+}
+
+.dynamic-text {
+  font-size: 30px; /* Match the size of other text */
+  overflow: hidden;
+  white-space: nowrap;
+  position: relative;
+  color: white; /* Ensure the text is visible */
+}
+
+.dynamic-text::after {
+  content: "|";
+  display: inline-block;
+  width: 2px; /* Adjust line thickness */
+  height: 1.1em; /* Adjust line height to match text size */
+  margin-left: 5px; /* Adjust spacing between cursor and text */
+  background-color: white; /* Adjust cursor color */
+  animation: cursor-blink 1s steps(30, end) infinite;
+}
+
+@keyframes cursor-blink {
+  0%, 50% {
+    opacity: 1;
+  }
+  50.1%, 100% {
+    opacity: 0;
+  }
+}
+
+@keyframes blink {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+.header-text::after {
+  content: "•"; /* The dot character */
+  font-size: 24px; /* Adjust the size of the dot */
+  position: absolute;
+  bottom: -10px; /* Adjust the distance from the text */
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0; /* Initially hidden */
+  transition: opacity 0.3s ease-in-out;
+}
+
+.header-text:hover::after {
+  opacity: 1; /* Show the dot on hover */
+}
+
+.header-text:hover, .header-text-final:hover {
+  animation: bounce 1s;
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-15px); /* Adjust bounce height */
+  }
+  60% {
+    transform: translateY(-7px); /* Adjust bounce height */
+  }
+}
+
+/* Add or update these styles in your style.css or equivalent */
+
+.name-scroll-container {
+  position: absolute;
+  bottom: 40%; /* Adjust position as needed */
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  z-index: 999;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.name-scroll {
+  font-size: 200px;
+  font-weight: 400;
+  white-space: nowrap;
+  animation: scroll 15s linear infinite;
+  animation-timing-function: linear; /* Ensures smooth linear movement */
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
+/* Experience Section Styles */
+.experience-section {
+  background-color: #1a1822;
+  color: white; /* Ensure text is readable */
+  padding: 20px;
+  width: 100%;
+  height: 100%;
+}
+
+
+
