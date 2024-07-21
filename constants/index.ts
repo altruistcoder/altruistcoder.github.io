@@ -1,13 +1,14 @@
-import Digivision from "../public/assets/Digivision.jpeg"
-import Zephyr from "../public/assets/Zephyr.png"
-import Shortish from "../public/assets/Shortish.png"
-import udemy from "../public/assets/udemy.svg"
-import javascript from "../public/assets/javascriptCourse.jpg"
+import Digivision from "../public/assets/Digivision.jpeg";
+import Zephyr from "../public/assets/Zephyr.png";
+import Shortish from "../public/assets/Shortish.png";
+import udemy from "../public/assets/udemy.svg";
+import javascript from "../public/assets/javascriptCourse.jpg";
 
 const projects = [
   {
     name: "Digivision",
-    description: "A deep learning based application which is entitled to help the visually impaired people. The application automatically generates the textual description of what's happening in front of the camera and conveys it to person through audio. It is capable of recognising faces and tell user whether a known person is present in front of him or not.",
+    description:
+      "A deep learning based application which is entitled to help the visually impaired people. The application automatically generates the textual description of what's happening in front of the camera and conveys it to person through audio. It is capable of recognising faces and tell user whether a known person is present in front of him or not.",
     tags: [
       {
         name: "Python",
@@ -133,6 +134,30 @@ const projects = [
 ];
 
 const testimonials = [
+  {
+    name: "Javascript",
+    designation: "Issued",
+    company: "Udemy",
+    image: udemy,
+    url: "https://udemy.com",
+    course: javascript,
+  },
+  {
+    name: "Data Structures & Algorithms",
+    designation: "Issued",
+    company: "Udemy",
+    image: udemy,
+    url: "https://udemy.com",
+    course: javascript,
+  },
+  {
+    name: "Development with NodeJS, Express and MongoDB",
+    designation: "Issued",
+    company: "Coursera",
+    image: udemy,
+    url: "https://coursera.org",
+    course: javascript,
+  },
   {
     name: "Javascript",
     designation: "Issued",

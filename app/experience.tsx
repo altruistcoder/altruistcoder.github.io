@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Container, Grid, Typography, Box, Paper } from "@mui/material";
 
+// Define type for experience data
 interface ExperienceData {
   years: number[];
 }
@@ -39,7 +40,7 @@ const Experience = () => {
             </Grid>
             <Grid item xs={6}>
               <Typography variant="h4" align="right">
-                28 <Typography variant="subtitle2">years old</Typography>
+                29 <Typography variant="subtitle2">years old</Typography>
               </Typography>
             </Grid>
             <Grid item xs={12}>
@@ -52,6 +53,7 @@ const Experience = () => {
                   py: 5,
                 }}
               >
+                {/* Horizontal Line */}
                 <Box
                   sx={{
                     position: "absolute",

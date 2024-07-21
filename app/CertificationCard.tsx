@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { Modal, Box } from "@mui/material";
-import { fadeIn } from "./utils/motion"; // Adjust the import path as needed
+import { fadeIn } from "./utils/motion";
 
 interface CertificationCardProps {
   index: number;
@@ -22,11 +22,7 @@ const CertificationCard: React.FC<CertificationCardProps> = ({
   url,
   course,
 }) => {
-  const [hovered, setHovered] = useState(false);
   const [open, setOpen] = useState(false);
-
-  const handleMouseEnter = () => setHovered(true);
-  const handleMouseLeave = () => setHovered(false);
 
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -35,15 +31,15 @@ const CertificationCard: React.FC<CertificationCardProps> = ({
     <>
       <motion.div
         variants={fadeIn("", "spring", index * 0.5, 0.75)}
-        className="bg-[#090325] p-10 rounded-3xl w-full relative overflow-hidden"
-        onMouseEnter={handleMouseEnter}
-        onMouseLeave={handleMouseLeave}
+        className="bg-[#232229] p-10 rounded-3xl w-full relative overflow-hidden"
+        style={{ minHeight: "350px", maxHeight: "350px" }} // Set a consistent height
       >
         <div className="relative mt-1">
           <img
             src={typeof course === "string" ? course : course.src}
             alt={name}
             className="w-full h-auto object-cover"
+            style={{ minHeight: "100%", maxHeight: "100%" }} // Ensure image fills the container
           />
         </div>
         <div className="mt-7 flex justify-between items-center gap-1">
@@ -63,21 +59,6 @@ const CertificationCard: React.FC<CertificationCardProps> = ({
             />
           </a>
         </div>
-        {hovered && (
-          <motion.div
-            className="fixed inset-0 z-50 flex justify-center items-center bg-black-200"
-            onClick={handleOpen}
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.3 }}
-          >
-            <img
-              src={typeof course === "string" ? course : course.src}
-              alt={name}
-              className="max-w-full max-h-full"
-            />
-          </motion.div>
-        )}
       </motion.div>
       <Modal open={open} onClose={handleClose}>
         <Box

@@ -94,12 +94,14 @@ const Introduction = () => {
       container
       sx={{
         backgroundColor: "#9a9e9f",
-        height: "100vh",
+        height: "100vh", // Set height to 100% to fill its parent container
         overflow: "hidden",
         position: "relative",
       }}
     >
+      {/* Left Section */}
       <Grid item xs={4} sx={{ position: "relative", padding: "20px" }}>
+        {/* Code by Dennis Logo */}
         <Box
           sx={{
             position: "absolute",
