@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Container, Grid, Typography, Box, Paper } from "@mui/material";
+import { Container, Grid, Typography, Box } from "@mui/material";
 
 // Define type for experience data
 interface ExperienceData {
@@ -63,6 +63,7 @@ const Experience = () => {
                     height: 2,
                     backgroundColor: "white",
                     zIndex: 0,
+                    transition: "width 0.3s ease",
                   }}
                 />
                 {selectedYear !== null && (
@@ -75,13 +76,13 @@ const Experience = () => {
                       height: 2,
                       backgroundColor: "#DF6589FF",
                       zIndex: 1,
+                      transition: "width 0.3s ease",
                     }}
                   />
                 )}
                 {experienceData.years.map((year, index) => {
                   const isSelected = selectedYear === year;
                   const leftPosition = `${getLeftPosition(year)}%`;
-                  const marginLeft = index === 0 ? 0 : `-5px`; // Adjust dot alignment for the first dot
                   const isPastSelected = selectedYearIndex !== -1 && index <= selectedYearIndex;
 
                   return (
@@ -96,29 +97,33 @@ const Experience = () => {
                         alignItems: "center",
                         cursor: "pointer",
                         zIndex: 2,
-                        color: "white", // White color for year label
-                        textAlign: "center", // Center align text
-                        paddingTop: "28px", // Space between dot and year label
-                        marginLeft: marginLeft, // Adjust dot alignment
+                        color: "white",
+                        textAlign: "center",
+                        paddingTop: "28px",
                       }}
                       onClick={() => handleYearClick(year)}
                     >
                       {/* Dot */}
                       <Box
                         sx={{
-                          width: 10,
-                          height: 10,
-                          backgroundColor: isSelected || isPastSelected
+                          width: isSelected ? 12 : 10,
+                          height: isSelected ? 12 : 10,
+                          backgroundColor: isSelected
+                            ? "#DF6589FF"
+                            : isPastSelected
                             ? "#DF6589FF"
                             : "white",
                           borderRadius: "50%",
                           zIndex: 2,
+                          border: isSelected ? "2px solid #1c1b22" : "none",
+                          transition: "all 0.3s ease",
+                          boxShadow: isSelected ? "0 0 0 2px #DF6589FF" : "none",
                         }}
                       />
                       {/* Year label */}
                       <Typography
                         variant="body2"
-                        sx={{ color: "white", marginTop: 1 }} // Ensure year text is white
+                        sx={{ color: "white", marginTop: 1 }}
                       >
                         {year}
                       </Typography>

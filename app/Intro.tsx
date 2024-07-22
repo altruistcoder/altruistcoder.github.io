@@ -17,6 +17,7 @@ const ScrollingTextContainer = styled(Box)({
   zIndex: 999,
   pointerEvents: "none",
   overflow: "hidden",
+  color: "white",
 });
 
 // Styled component for the scrolling text itself
@@ -111,7 +112,7 @@ const Introduction = () => {
           }}
         >
           <Typography variant="h6" sx={{ color: "white" }}>
-            © Code by Dennis
+            RA
           </Typography>
         </Box>
 
@@ -191,6 +192,7 @@ const Introduction = () => {
               cursor: "pointer",
               position: "relative",
               transition: "all 0.3s ease-in-out", // Add transition
+              color: "white",
               "&::before": {
                 content: '""',
                 position: "absolute",
@@ -221,6 +223,7 @@ const Introduction = () => {
               cursor: "pointer",
               position: "relative",
               transition: "all 0.3s ease-in-out", // Add transition
+              color: "white",
               "&::before": {
                 content: '""',
                 position: "absolute",
@@ -251,6 +254,7 @@ const Introduction = () => {
               cursor: "pointer",
               position: "relative",
               transition: "all 0.3s ease-in-out", // Add transition
+              color: "white",
               "&::before": {
                 content: '""',
                 position: "absolute",
