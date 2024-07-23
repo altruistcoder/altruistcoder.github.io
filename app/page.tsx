@@ -8,7 +8,7 @@ import Experience from "./experience";
 import Skills from "./skills";
 import Projects from "./projects";
 import Certifications from "./certifications";
-import Awards from "./awards";
+// import Awards from "./awards";
 import Contact from "./contact";
 import Loading from "./loading";
 import { Box, keyframes } from "@mui/material";
@@ -49,7 +49,7 @@ export default function Home() {
       <Skills />
       <Projects />
       <Certifications />
-      <Awards />
+      {/* <Awards /> */}
       <Contact />
     </Box>
   );
