@@ -157,7 +157,7 @@ const Introduction = () => {
       {/* Center Section */}
       <Grid item xs={4} sx={{ position: "relative", overflow: "hidden" }}>
         <img
-          src="/emoticon.png"
+          src="/sticker-1.png"
           alt="Dennis Snellenberg - Freelance Designer & Developer"
           style={{
             width: "100%",
