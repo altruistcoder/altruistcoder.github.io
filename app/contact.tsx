@@ -69,6 +69,16 @@ const Contact = () => {
                 >
                   Send
                 </Button>
+                <Button
+                  variant="outlined"
+                  style={{
+                    marginTop: "20px",
+                    backgroundColor: "#1c1b22",
+                    color: "white",
+                  }}
+                >
+                  Cancel
+                </Button>
               </form>
             </Box>
           </Grid>
