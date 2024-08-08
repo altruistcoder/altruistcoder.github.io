@@ -97,7 +97,7 @@ const Experience = () => {
                         alignItems: "center",
                         cursor: "pointer",
                         zIndex: 2,
-                        color: "white",
+                        color: "#FAF9F6",
                         textAlign: "center",
                         paddingTop: "28px",
                       }}
