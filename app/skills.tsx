@@ -52,7 +52,7 @@ const Skills = () => {
   return (
     <Box sx={{ backgroundColor: "#1c1b22", paddingTop: "2rem", paddingBottom: "2rem" }}>
       <Container maxWidth="lg">
-        <Box sx={{ color: "white", padding: 8 }}>
+        <Box sx={{ color: "white", paddingTop: 8 }}>
           <Grid container spacing={4}>
             <Grid item xs={12}>
               <Typography variant="h4" style={{ fontSize: '17px' }}>WHAT I HAVE LEARNT</Typography>

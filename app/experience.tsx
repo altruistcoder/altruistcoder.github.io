@@ -32,11 +32,18 @@ const Experience = () => {
   return (
     <Box sx={{ backgroundColor: "#1c1b22", paddingBottom: "2rem" }}>
       <Container maxWidth="lg">
-        <Box sx={{ color: "white", padding: 8 }}>
+        <Box sx={{ color: "white", paddingTop: 8 }}>
           <Grid container spacing={4}>
             <Grid item xs={6}>
-              <Typography variant="h4" style={{ fontSize: '17px' }}>MY CAREER</Typography>
-              <Typography variant="h4" style={{ paddingTop: '10px', fontWeight: 'bold' }}>Education & Experience</Typography>
+              <Typography variant="h4" style={{ fontSize: "17px" }}>
+                MY CAREER
+              </Typography>
+              <Typography
+                variant="h4"
+                style={{ paddingTop: "10px", fontWeight: "bold" }}
+              >
+                Education & Experience
+              </Typography>
             </Grid>
             <Grid item xs={6}>
               <Typography variant="h4" align="right">
@@ -83,7 +90,8 @@ const Experience = () => {
                 {experienceData.years.map((year, index) => {
                   const isSelected = selectedYear === year;
                   const leftPosition = `${getLeftPosition(year)}%`;
-                  const isPastSelected = selectedYearIndex !== -1 && index <= selectedYearIndex;
+                  const isPastSelected =
+                    selectedYearIndex !== -1 && index <= selectedYearIndex;
 
                   return (
                     <Box
@@ -117,7 +125,9 @@ const Experience = () => {
                           zIndex: 2,
                           border: isSelected ? "2px solid #1c1b22" : "none",
                           transition: "all 0.3s ease",
-                          boxShadow: isSelected ? "0 0 0 2px #DF6589FF" : "none",
+                          boxShadow: isSelected
+                            ? "0 0 0 2px #DF6589FF"
+                            : "none",
                         }}
                       />
                       {/* Year label */}
@@ -142,35 +152,40 @@ const Experience = () => {
                     padding: 4,
                     borderRadius: 2,
                     boxShadow: 3,
-                    position: 'relative',
-                    overflow: 'hidden',
+                    position: "relative",
+                    overflow: "hidden",
                   }}
                 >
                   <Typography variant="h6" sx={{ color: "#DF6589FF" }}>
                     24 Sept {selectedYear}
                   </Typography>
-                  <Typography variant="h5" sx={{ marginTop: 2, fontWeight: 'bold' }}>
+                  <Typography
+                    variant="h5"
+                    sx={{ marginTop: 2, fontWeight: "bold" }}
+                  >
                     I took responsibility in my life
                   </Typography>
                   <Typography variant="body1" sx={{ paddingTop: 3 }}>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla
-                    quam velit, vulputate eu pharetra nec, mattis ac neque. Duis
-                    vulputate commodo lectus, ac blandit elit tincidunt id.
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    Nulla quam velit, vulputate eu pharetra nec, mattis ac
+                    neque. Duis vulputate commodo lectus, ac blandit elit
+                    tincidunt id.
                   </Typography>
                   <Typography variant="body1" sx={{ paddingTop: 1 }}>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla
-                    quam velit, vulputate eu pharetra nec, mattis ac neque. Duis
-                    vulputate commodo lectus, ac blandit elit tincidunt id.
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    Nulla quam velit, vulputate eu pharetra nec, mattis ac
+                    neque. Duis vulputate commodo lectus, ac blandit elit
+                    tincidunt id.
                   </Typography>
                   <Box
                     sx={{
-                      position: 'absolute',
+                      position: "absolute",
                       bottom: 0,
                       left: 0,
                       right: 0,
-                      height: '4px',
-                      backgroundColor: 'white',
-                      borderRadius: '0 0 4px 4px',
+                      height: "4px",
+                      backgroundColor: "white",
+                      borderRadius: "0 0 4px 4px",
                     }}
                   />
                 </Box>

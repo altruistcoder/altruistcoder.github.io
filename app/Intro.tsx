@@ -8,7 +8,7 @@ import { styled } from "@mui/system";
 // Styled component for the scrolling text container
 const ScrollingTextContainer = styled(Box)({
   position: "absolute",
-  bottom: "0%", /* Adjust position as needed */
+  bottom: "0%" /* Adjust position as needed */,
   left: 0,
   width: "100%",
   display: "flex",
@@ -26,7 +26,7 @@ const ScrollingText = styled(Typography)({
   fontWeight: 400,
   whiteSpace: "nowrap",
   animation: "scroll 15s linear infinite",
-  animationTimingFunction: "linear", /* Ensures smooth linear movement */
+  animationTimingFunction: "linear" /* Ensures smooth linear movement */,
 
   // Keyframes for the scrolling animation
   "@keyframes scroll": {
@@ -281,9 +281,7 @@ const Introduction = () => {
           </Typography>
         </Box>
         <ScrollingTextContainer>
-          <ScrollingText>
-            Rishabh Aggarwal - Rishabh Aggarwal
-          </ScrollingText>
+          <ScrollingText>Rishabh Aggarwal - Rishabh Aggarwal</ScrollingText>
         </ScrollingTextContainer>
         <Box
           sx={{

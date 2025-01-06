@@ -23,7 +23,7 @@ const CertificationCard: React.FC<CertificationCardProps> = ({
 }) => (
   <motion.div
     variants={fadeIn("", "spring", index * 0.5, 0.75)}
-    className="bg-[#232229] p-10 rounded-3xl w-full"
+    className="bg-[#1c1b22] p-10 rounded-3xl flex flex-col"
     whileHover={{
       scale: 1.05, // Slightly enlarge the card
       transition: { duration: 0.3 },
@@ -32,23 +32,31 @@ const CertificationCard: React.FC<CertificationCardProps> = ({
       scale: 0.95, // Slightly shrink the card when clicked
       transition: { duration: 0.3 },
     }}
+    style={{ height: "100%" }} // Ensure equal height for all cards
   >
-    <div className="relative mt-1">
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        height: "100%",
+        justifyContent: "space-between",
+      }}
+    >
+      {/* Image */}
       <motion.img
         src={typeof course === "string" ? course : course.src}
         alt={name}
-        className="w-full h-auto object-cover"
+        className="w-full h-[200px] object-cover"
         whileHover={{ scale: 1.1 }} // Enlarge the image on hover
         transition={{ duration: 0.3 }}
-        style={{ cursor: 'pointer' }} // Cursor pointer on hover
+        style={{ cursor: "pointer", borderRadius: "10px" }}
       />
+
+      {/* Certification Details */}
       <div className="mt-7 flex justify-between items-center gap-1">
         <div className="flex-1 flex flex-col">
           <p className="text-white font-medium text-[16px]">
             <span className="blue-text-gradient">@</span> {name}
-          </p>
-          <p className="mt-1 text-secondary text-[12px]">
-            {designation} by {company}
           </p>
         </div>
         <a href={url} target="_blank" rel="noopener noreferrer">
@@ -59,6 +67,9 @@ const CertificationCard: React.FC<CertificationCardProps> = ({
           />
         </a>
       </div>
+      <p className="mt-4 text-secondary text-[12px]">
+        {designation} by {company}
+      </p>
     </div>
   </motion.div>
 );

@@ -11,14 +11,30 @@ import { Navigation } from "swiper/modules";
 
 const Certifications = () => {
   return (
-    <Box sx={{ backgroundColor: "#1c1b22", paddingTop: "2rem", paddingBottom: "2rem" }}>
+    <Box
+      sx={{
+        backgroundColor: "#1c1b22",
+        paddingTop: "2rem",
+        paddingBottom: "2rem",
+      }}
+    >
       <Container maxWidth="lg">
-        <Box sx={{ color: "white", padding: 8 }}>
+        <Box
+          sx={{
+            color: "white",
+            padding: 8,
+            backgroundColor: "#232229",
+            borderRadius: "20px",
+          }}
+        >
           <motion.div variants={textVariant()}>
             <Typography variant="h4" style={{ fontSize: "17px" }}>
               WHAT YOU FOCUS ON GROWS
             </Typography>
-            <Typography variant="h4" style={{ paddingTop: "10px", fontWeight: "bold" }}>
+            <Typography
+              variant="h4"
+              style={{ paddingTop: "10px", fontWeight: "bold" }}
+            >
               Certifications
             </Typography>
           </motion.div>
@@ -30,7 +46,13 @@ const Certifications = () => {
             style={{ padding: "40px 0" }}
           >
             {testimonials.map((certification, index) => (
-              <SwiperSlide key={index}>
+              <SwiperSlide
+                key={index}
+                style={{
+                  display: "flex",
+                  height: "400px", // Ensure a consistent height for each slide
+                }}
+              >
                 <CertificationCard index={index} {...certification} />
               </SwiperSlide>
             ))}
