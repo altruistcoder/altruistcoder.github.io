@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   Container,
   Grid,
@@ -102,7 +102,7 @@ const Contact = () => {
     });
   };
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (globeElement.current) {
       // Auto-rotate globe on page load
       globeElement.current.controls().autoRotate = true;
@@ -111,7 +111,8 @@ const Contact = () => {
     }
   }, []);
 
-  React.useLayoutEffect(() => {
+  useEffect(() => {
+    // This code will only run on the client side
     setSize([window.innerWidth, window.innerHeight]);
   }, []);
 

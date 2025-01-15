@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Tilt from "react-parallax-tilt";
 import { motion } from "framer-motion";
 import GitHubIcon from "@mui/icons-material/GitHub";
@@ -53,7 +53,9 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
   source_code_link,
 }) => {
   const handleGitHubClick = () => {
-    window.open(source_code_link, "_blank");
+    if (typeof window !== "undefined") {
+      window.open(source_code_link, "_blank");
+    }
   };
 
   return (
