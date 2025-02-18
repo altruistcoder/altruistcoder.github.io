@@ -1,4 +1,7 @@
-import React, { useEffect } from "react";
+"use client";
+
+import React, { Suspense } from "react";
+import dynamic from "next/dynamic";
 import {
   Container,
   Grid,
@@ -7,12 +10,18 @@ import {
   TextField,
   Button,
   IconButton,
+  CircularProgress,
 } from "@mui/material";
 import { styled } from "@mui/system";
-import Globe, { GlobeMethods } from "react-globe.gl";
 import ArrowUpwardIcon from "@mui/icons-material/ArrowUpward";
 
-// Generate random arcs data for the globe (not modified)
+// Dynamically import Globe with no SSR
+const Globe = dynamic(() => import("react-globe.gl"), {
+  ssr: false,
+  loading: () => <CircularProgress />,
+});
+
+// Generate random arcs data for the globe
 const N = 1000;
 const arcsData = Array.from(Array(N).keys()).map(() => ({
   startLat: (Math.random() - 0.5) * 180,
@@ -44,7 +53,7 @@ const StarsContainer = styled(Box)({
   height: "100%",
   zIndex: 1,
   overflow: "hidden",
-  pointerEvents: "none", // Prevent interference with page interactions
+  pointerEvents: "none",
 });
 
 const Star = styled(Box)({
@@ -67,11 +76,11 @@ const Star = styled(Box)({
 const generateStars = (count: number) => {
   const stars = [];
   for (let i = 0; i < count; i++) {
-    const top = Math.random() * 100; // Random vertical position (0-100%)
-    const left = Math.random() * 100; // Random horizontal position (0-100%)
-    const size = Math.random() * 3 + 1; // Random size for the stars (1-4px)
-    const duration = Math.random() * 15 + 10; // Random animation duration (10-25s)
-    const delay = Math.random() * 5; // Random animation delay (0-5s)
+    const top = Math.random() * 100;
+    const left = Math.random() * 100;
+    const size = Math.random() * 3 + 1;
+    const duration = Math.random() * 15 + 10;
+    const delay = Math.random() * 5;
 
     stars.push(
       <Star
@@ -91,30 +100,30 @@ const generateStars = (count: number) => {
 };
 
 const Contact = () => {
-  const globeElement = React.useRef<GlobeMethods | undefined>(undefined);
   const [size, setSize] = React.useState([0, 0]);
+  const globeRef = React.useRef();
 
-  // Scroll to top function
-  const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    });
-  };
+  React.useEffect(() => {
+    if (typeof window !== "undefined") {
+      setSize([window.innerWidth, window.innerHeight]);
 
-  useEffect(() => {
-    if (globeElement.current) {
-      // Auto-rotate globe on page load
-      globeElement.current.controls().autoRotate = true;
-      globeElement.current.controls().autoRotateSpeed = 2;
-      globeElement.current.controls().enableZoom = false;
+      const handleResize = () => {
+        setSize([window.innerWidth, window.innerHeight]);
+      };
+
+      window.addEventListener("resize", handleResize);
+      return () => window.removeEventListener("resize", handleResize);
     }
   }, []);
 
-  useEffect(() => {
-    // This code will only run on the client side
-    setSize([window.innerWidth, window.innerHeight]);
-  }, []);
+  const scrollToTop = () => {
+    if (typeof window !== "undefined") {
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      });
+    }
+  };
 
   return (
     <Box
@@ -126,7 +135,6 @@ const Contact = () => {
         paddingTop: "8rem",
       }}
     >
-      {/* Stars in background */}
       <StarsContainer>{generateStars(500)}</StarsContainer>
 
       <Container maxWidth="lg" sx={{ position: "relative", zIndex: 2 }}>
@@ -243,28 +251,31 @@ const Contact = () => {
             }}
           >
             <GlobeContainer sx={{ height: "600px" }}>
-              <Globe
-                width={size[0]}
-                height={size[1]}
-                waitForGlobeReady={false}
-                globeImageUrl="//unpkg.com/three-globe/example/img/earth-blue-marble.jpg"
-                arcsData={arcsData}
-                arcColor={"color"}
-                arcDashLength={() => Math.random()}
-                arcDashGap={() => Math.random()}
-                arcStroke={0.05}
-                animateIn={false}
-                arcDashAnimateTime={10000}
-                ref={globeElement}
-                enablePointerInteraction={false}
-                backgroundColor="rgba(0, 0, 0, 0)" // Set background to transparent
-              />
+              <Suspense fallback={<CircularProgress />}>
+                {typeof window !== "undefined" && (
+                  <Globe
+                    ref={globeRef}
+                    width={size[0]}
+                    height={size[1]}
+                    waitForGlobeReady={false}
+                    globeImageUrl="//unpkg.com/three-globe/example/img/earth-blue-marble.jpg"
+                    arcsData={arcsData}
+                    arcColor={"color"}
+                    arcDashLength={() => Math.random()}
+                    arcDashGap={() => Math.random()}
+                    arcStroke={0.05}
+                    animateIn={false}
+                    arcDashAnimateTime={10000}
+                    enablePointerInteraction={false}
+                    backgroundColor="rgba(0, 0, 0, 0)"
+                  />
+                )}
+              </Suspense>
             </GlobeContainer>
           </Grid>
         </Grid>
       </Container>
 
-      {/* Scroll-to-top button */}
       <IconButton
         onClick={scrollToTop}
         sx={{
@@ -276,7 +287,7 @@ const Contact = () => {
           borderRadius: "50%",
           padding: "10px",
           "&:hover": {
-            backgroundColor: "rgba(255, 255, 255, 0.75)", // Keep the same background color on hover
+            backgroundColor: "rgba(255, 255, 255, 0.75)",
           },
         }}
       >
