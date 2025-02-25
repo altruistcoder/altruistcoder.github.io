@@ -33,10 +33,10 @@ const ScrollingText = styled(Typography)({
   // Keyframes for the scrolling animation
   "@keyframes scroll": {
     "0%": {
-      transform: "translateX(-50%)",
+      transform: "translateX(0%)",
     },
     "100%": {
-      transform: "translateX(0%)",
+      transform: "translateX(-50%)",
     },
   },
 });
@@ -93,6 +93,16 @@ const Introduction = () => {
     }
   }, []);
 
+  const scrollToSection = (sectionId: string) => {
+    const section = document.getElementById(sectionId);
+    if (section) {
+      section.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    }
+  };
+
   return (
     <Grid
       container
@@ -120,41 +130,80 @@ const Introduction = () => {
         </Box>
 
         {/* Icons Grid */}
-        <Box
+        {/* <Box
           sx={{
-            position: "absolute",
-            top: "40%",
-            left: "0",
+            position: "fixed", // Change from absolute to fixed
+            left: "20px", // Add left spacing from edge
+            top: "50%", // Center vertically
+            transform: "translateY(-50%)", // Perfect vertical centering
             display: "flex",
-            flexDirection: isScrolled ? "column" : "row", // Dynamic direction
+            flexDirection: isScrolled ? "column" : "row",
             alignItems: "center",
-            borderTopRightRadius: isScrolled ? "0" : "20px", // Adjusted rounded corners
+            borderTopRightRadius: isScrolled ? "0" : "20px",
             borderBottomRightRadius: isScrolled ? "0" : "20px",
             backgroundColor: "#1c1d20",
-            padding: "10px",
-            transition:
-              "transform 0.3s ease-in-out, flex-direction 0.3s ease-in-out", // Transition for transform and flex-direction
+            padding: "15px", // Slightly increased padding
+            zIndex: 1000, // Ensure icons stay above other content
+            boxShadow: "0 4px 12px rgba(0,0,0,0.15)", // Optional: adds subtle shadow
           }}
         >
           <IconButton
-            sx={{ padding: "10px", borderRadius: "10px", marginBottom: "5px" }}
+            sx={{
+              padding: "10px",
+              borderRadius: "10px",
+              marginBottom: isScrolled ? "10px" : "0",
+              marginRight: !isScrolled ? "10px" : "0",
+              transition: "all 0.3s ease-in-out",
+              "&:hover": {
+                backgroundColor: "rgba(255,255,255,0.1)",
+              },
+            }}
           >
             <FaGithub size={"3rem"} style={{ color: "white" }} />
           </IconButton>
           <IconButton
-            sx={{ padding: "10px", borderRadius: "10px", marginBottom: "5px" }}
+            sx={{
+              padding: "10px",
+              borderRadius: "10px",
+              marginBottom: isScrolled ? "10px" : "0",
+              marginRight: !isScrolled ? "10px" : "0",
+              transition: "all 0.3s ease-in-out",
+              "&:hover": {
+                backgroundColor: "rgba(255,255,255,0.1)",
+              },
+            }}
           >
             <FaLinkedin size={"3rem"} style={{ color: "white" }} />
           </IconButton>
           <IconButton
-            sx={{ padding: "10px", borderRadius: "10px", marginBottom: "5px" }}
+            sx={{
+              padding: "10px",
+              borderRadius: "10px",
+              marginBottom: isScrolled ? "10px" : "0",
+              marginRight: !isScrolled ? "10px" : "0",
+              transition: "all 0.3s ease-in-out",
+              "&:hover": {
+                backgroundColor: "rgba(255,255,255,0.1)",
+              },
+            }}
           >
             <FaMedium size={"3rem"} style={{ color: "white" }} />
           </IconButton>
-          <IconButton sx={{ padding: "10px", borderRadius: "10px" }}>
+          <IconButton
+            sx={{
+              padding: "10px",
+              borderRadius: "10px",
+              marginBottom: isScrolled ? "10px" : "0",
+              marginRight: !isScrolled ? "10px" : "0",
+              transition: "all 0.3s ease-in-out",
+              "&:hover": {
+                backgroundColor: "rgba(255,255,255,0.1)",
+              },
+            }}
+          >
             <HiMail size={"3.5rem"} style={{ color: "white" }} />
           </IconButton>
-        </Box>
+        </Box> */}
       </Grid>
 
       {/* Center Section */}
@@ -191,6 +240,7 @@ const Introduction = () => {
         <Box sx={{ display: "flex", gap: "20px" }}>
           <Typography
             variant="h6"
+            onClick={() => scrollToSection("work")}
             sx={{
               cursor: "pointer",
               position: "relative",
@@ -222,6 +272,7 @@ const Introduction = () => {
           </Typography>
           <Typography
             variant="h6"
+            onClick={() => scrollToSection("about")}
             sx={{
               cursor: "pointer",
               position: "relative",
@@ -253,6 +304,7 @@ const Introduction = () => {
           </Typography>
           <Typography
             variant="h6"
+            onClick={() => scrollToSection("contact")}
             sx={{
               cursor: "pointer",
               position: "relative",
