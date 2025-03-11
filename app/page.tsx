@@ -12,6 +12,7 @@ import Certifications from "./certifications";
 import Contact from "./contact";
 import Loading from "./loading";
 import { Box, keyframes } from "@mui/material";
+import SocialIcons from "./SocialIcons";
 
 // Define the wave animation keyframes
 const waveAnimation = keyframes`
@@ -23,6 +24,21 @@ const waveAnimation = keyframes`
 export default function Home() {
   const [isLoading, setIsLoading] = useState(true);
   const [isHomeVisible, setIsHomeVisible] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false); // Add this state
+
+  // Add useEffect for scroll handling
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 100) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const handleFinishLoading = () => {
     setIsLoading(false);
@@ -36,21 +52,26 @@ export default function Home() {
   }
 
   return (
-    <Box
-      sx={{
-        width: "100%",
-        height: "100%",
-        opacity: isHomeVisible ? 1 : 0,
-        animation: isHomeVisible ? `${waveAnimation} 1s ease-in-out forwards` : "none",
-      }}
-    >
-      <Introduction />
-      <Experience />
-      <Skills />
-      <Projects />
-      <Certifications />
-      {/* <Awards /> */}
-      <Contact />
-    </Box>
+    <>
+      <SocialIcons isScrolled={isScrolled} isVisible={isHomeVisible} />{" "}
+      <Box
+        sx={{
+          width: "100%",
+          height: "100%",
+          opacity: isHomeVisible ? 1 : 0,
+          animation: isHomeVisible
+            ? `${waveAnimation} 1s ease-in-out forwards`
+            : "none",
+        }}
+      >
+        <Introduction />
+        <Experience />
+        <Skills />
+        <Projects />
+        <Certifications />
+        {/* <Awards /> */}
+        <Contact />
+      </Box>
+    </>
   );
 }
