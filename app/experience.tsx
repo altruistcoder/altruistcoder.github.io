@@ -30,7 +30,13 @@ const Experience = () => {
     : -1;
 
   return (
-    <Box sx={{ backgroundColor: "#1c1b22", paddingBottom: "2rem" }}>
+    <Box
+      id="about"
+      sx={{
+        backgroundColor: "#1c1b22",
+        paddingBottom: "2rem",
+      }}
+    >
       <Container maxWidth="lg">
         <Box sx={{ color: "white", paddingTop: 8 }}>
           <Grid container spacing={4}>

@@ -12,7 +12,12 @@ const textVariant = () => ({
 const Projects: React.FC = () => {
   return (
     <Box
-      sx={{ backgroundColor: "#1c1b22", paddingTop: "2rem", paddingBottom: "2rem" }}
+      id="work"
+      sx={{
+        backgroundColor: "#1c1b22",
+        paddingTop: "2rem",
+        paddingBottom: "2rem",
+      }}
     >
       <Container maxWidth="lg">
         <Box sx={{ color: "white", paddingTop: 8 }}>
@@ -29,7 +34,15 @@ const Projects: React.FC = () => {
           </motion.div>
           <Grid container spacing={4} sx={{ marginTop: "2rem" }}>
             {projects.map((project, index) => (
-              <Grid item xs={12} sm={6} md={6} lg={4} key={index} className="flex">
+              <Grid
+                item
+                xs={12}
+                sm={6}
+                md={6}
+                lg={4}
+                key={index}
+                className="flex"
+              >
                 <Box
                   sx={{
                     height: "100%",
